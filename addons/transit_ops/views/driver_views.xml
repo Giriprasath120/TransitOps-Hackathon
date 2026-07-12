@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ========================= -->
     <!-- Driver Tree View -->
-    <!-- ========================= -->
     <record id="view_transit_driver_tree" model="ir.ui.view">
         <field name="name">transit.driver.tree</field>
         <field name="model">transit.driver</field>
         <field name="arch" type="xml">
-            <tree string="Drivers">
+            <tree>
                 <field name="name"/>
                 <field name="license_no"/>
                 <field name="phone"/>
@@ -18,16 +16,13 @@
         </field>
     </record>
 
-    <!-- ========================= -->
     <!-- Driver Form View -->
-    <!-- ========================= -->
     <record id="view_transit_driver_form" model="ir.ui.view">
         <field name="name">transit.driver.form</field>
         <field name="model">transit.driver</field>
         <field name="arch" type="xml">
-            <form string="Driver">
+            <form>
                 <sheet>
-
                     <group>
                         <group>
                             <field name="name"/>
@@ -40,26 +35,21 @@
                             <field name="status"/>
                         </group>
                     </group>
-
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- ========================= -->
     <!-- Driver Search View -->
-    <!-- ========================= -->
     <record id="view_transit_driver_search" model="ir.ui.view">
         <field name="name">transit.driver.search</field>
         <field name="model">transit.driver</field>
         <field name="arch" type="xml">
-            <search string="Search Drivers">
+            <search>
 
                 <field name="name"/>
                 <field name="license_no"/>
                 <field name="phone"/>
-
-                <separator/>
 
                 <filter
                     name="available"
@@ -76,21 +66,18 @@
                     string="Inactive"
                     domain="[('status','=','inactive')]"/>
 
-                <group expand="0" string="Group By">
+                <separator/>
 
-                    <filter
-                        string="Status"
-                        context="{'group_by':'status'}"/>
-
-                </group>
+                <filter
+                    name="group_status"
+                    string="Status"
+                    context="{'group_by':'status'}"/>
 
             </search>
         </field>
     </record>
 
-    <!-- ========================= -->
     <!-- Driver Window Action -->
-    <!-- ========================= -->
     <record id="action_transit_driver" model="ir.actions.act_window">
         <field name="name">Drivers</field>
         <field name="res_model">transit.driver</field>

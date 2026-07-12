@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ========================= -->
     <!-- Maintenance Tree View -->
-    <!-- ========================= -->
     <record id="view_transit_maintenance_tree" model="ir.ui.view">
         <field name="name">transit.maintenance.tree</field>
         <field name="model">transit.maintenance</field>
         <field name="arch" type="xml">
-            <tree string="Maintenance Records">
+            <tree>
                 <field name="vehicle_id"/>
                 <field name="service_date"/>
                 <field name="cost"/>
@@ -17,14 +15,12 @@
         </field>
     </record>
 
-    <!-- ========================= -->
     <!-- Maintenance Form View -->
-    <!-- ========================= -->
     <record id="view_transit_maintenance_form" model="ir.ui.view">
         <field name="name">transit.maintenance.form</field>
         <field name="model">transit.maintenance</field>
         <field name="arch" type="xml">
-            <form string="Maintenance Record">
+            <form>
                 <sheet>
 
                     <group>
@@ -48,19 +44,15 @@
         </field>
     </record>
 
-    <!-- ========================= -->
     <!-- Maintenance Search View -->
-    <!-- ========================= -->
     <record id="view_transit_maintenance_search" model="ir.ui.view">
         <field name="name">transit.maintenance.search</field>
         <field name="model">transit.maintenance</field>
         <field name="arch" type="xml">
-            <search string="Search Maintenance">
+            <search>
 
                 <field name="vehicle_id"/>
                 <field name="service_date"/>
-
-                <separator/>
 
                 <filter
                     name="scheduled"
@@ -72,29 +64,28 @@
                     string="Completed"
                     domain="[('status','=','completed')]"/>
 
-                <group expand="0" string="Group By">
+                <separator/>
 
-                    <filter
-                        string="Vehicle"
-                        context="{'group_by':'vehicle_id'}"/>
+                <filter
+                    name="group_vehicle"
+                    string="Vehicle"
+                    context="{'group_by':'vehicle_id'}"/>
 
-                    <filter
-                        string="Service Date"
-                        context="{'group_by':'service_date'}"/>
+                <filter
+                    name="group_service_date"
+                    string="Service Date"
+                    context="{'group_by':'service_date'}"/>
 
-                    <filter
-                        string="Status"
-                        context="{'group_by':'status'}"/>
-
-                </group>
+                <filter
+                    name="group_status"
+                    string="Status"
+                    context="{'group_by':'status'}"/>
 
             </search>
         </field>
     </record>
 
-    <!-- ========================= -->
     <!-- Window Action -->
-    <!-- ========================= -->
     <record id="action_transit_maintenance" model="ir.actions.act_window">
         <field name="name">Maintenance Records</field>
         <field name="res_model">transit.maintenance</field>
