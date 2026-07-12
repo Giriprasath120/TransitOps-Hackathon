@@ -1,2 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_transit_ops_transit_ops,transit_ops.transit_ops,model_transit_ops_transit_ops,base.group_user,1,1,1,1
+
+access_vehicle,access_vehicle,model_transit_vehicle,,1,1,1,1
+access_driver,access_driver,model_transit_driver,,1,1,1,1
+access_trip,access_trip,model_transit_trip,,1,1,1,1
+access_maintenance,access_maintenance,model_transit_maintenance,,1,1,1,1
+access_fuel_log,access_fuel_log,model_transit_fuel_log,,1,1,1,1
