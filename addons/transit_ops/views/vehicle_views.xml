@@ -72,9 +72,9 @@
                     domain="[('status','=','maintenance')]"/>
 
                 <filter
-                    name="in_trip"
-                    string="In Trip"
-                    domain="[('status','=','in_trip')]"/>
+                    name="on_trip"
+                    string="On Trip"
+                    domain="[('status','=','on_trip')]"/>
 
                 <group expand="0" string="Group By">
 
