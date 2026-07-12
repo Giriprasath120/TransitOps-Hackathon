@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================================= -->
+    <!-- Vehicle Tree View -->
+    <!-- ========================================= -->
+    <record id="view_transit_vehicle_tree" model="ir.ui.view">
+        <field name="name">transit.vehicle.tree</field>
+        <field name="model">transit.vehicle</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicles">
+                <field name="registration_no"/>
+                <field name="vehicle_name"/>
+                <field name="vehicle_type"/>
+                <field name="capacity"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================================= -->
+    <!-- Vehicle Form View -->
+    <!-- ========================================= -->
+    <record id="view_transit_vehicle_form" model="ir.ui.view">
+        <field name="name">transit.vehicle.form</field>
+        <field name="model">transit.vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="registration_no"/>
+                            <field name="vehicle_name"/>
+                            <field name="vehicle_type"/>
+                        </group>
+
+                        <group>
+                            <field name="capacity"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================================= -->
+    <!-- Vehicle Search View -->
+    <!-- ========================================= -->
+    <record id="view_transit_vehicle_search" model="ir.ui.view">
+        <field name="name">transit.vehicle.search</field>
+        <field name="model">transit.vehicle</field>
+        <field name="arch" type="xml">
+            <search string="Search Vehicles">
+
+                <field name="registration_no"/>
+                <field name="vehicle_name"/>
+                <field name="vehicle_type"/>
+
+                <separator/>
+
+                <filter
+                    name="available"
+                    string="Available"
+                    domain="[('status','=','available')]"/>
+
+                <filter
+                    name="maintenance"
+                    string="Maintenance"
+                    domain="[('status','=','maintenance')]"/>
+
+                <filter
+                    name="in_trip"
+                    string="In Trip"
+                    domain="[('status','=','in_trip')]"/>
+
+                <group expand="0" string="Group By">
+
+                    <filter
+                        string="Vehicle Type"
+                        context="{'group_by':'vehicle_type'}"/>
+
+                    <filter
+                        string="Status"
+                        context="{'group_by':'status'}"/>
+
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================================= -->
+    <!-- Vehicle Window Action -->
+    <!-- ========================================= -->
+    <record id="action_transit_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehicles</field>
+        <field name="res_model">transit.vehicle</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_transit_vehicle_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first vehicle record.
+            </p>
+        </field>
+    </record>
+
+</odoo>

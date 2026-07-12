@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Maintenance Tree View -->
+    <!-- ========================= -->
+    <record id="view_transit_maintenance_tree" model="ir.ui.view">
+        <field name="name">transit.maintenance.tree</field>
+        <field name="model">transit.maintenance</field>
+        <field name="arch" type="xml">
+            <tree string="Maintenance Logs">
+                <field name="maintenance_id"/>
+                <field name="vehicle_id"/>
+                <field name="maintenance_date"/>
+                <field name="maintenance_type"/>
+                <field name="cost"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Maintenance Form View -->
+    <!-- ========================= -->
+    <record id="view_transit_maintenance_form" model="ir.ui.view">
+        <field name="name">transit.maintenance.form</field>
+        <field name="model">transit.maintenance</field>
+        <field name="arch" type="xml">
+            <form string="Maintenance Record">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="maintenance_id"/>
+                            <field name="vehicle_id"/>
+                            <field name="maintenance_type"/>
+                        </group>
+
+                        <group>
+                            <field name="maintenance_date"/>
+                            <field name="cost"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+
+                    <group string="Remarks">
+                        <field name="remarks"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Maintenance Search View -->
+    <!-- ========================= -->
+    <record id="view_transit_maintenance_search" model="ir.ui.view">
+        <field name="name">transit.maintenance.search</field>
+        <field name="model">transit.maintenance</field>
+        <field name="arch" type="xml">
+            <search string="Search Maintenance">
+
+                <field name="maintenance_id"/>
+                <field name="vehicle_id"/>
+                <field name="maintenance_type"/>
+
+                <separator/>
+
+                <filter
+                    name="pending"
+                    string="Pending"
+                    domain="[('status','=','pending')]"/>
+
+                <filter
+                    name="completed"
+                    string="Completed"
+                    domain="[('status','=','completed')]"/>
+
+                <group expand="0" string="Group By">
+
+                    <filter
+                        string="Vehicle"
+                        context="{'group_by':'vehicle_id'}"/>
+
+                    <filter
+                        string="Maintenance Type"
+                        context="{'group_by':'maintenance_type'}"/>
+
+                    <filter
+                        string="Status"
+                        context="{'group_by':'status'}"/>
+
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Window Action -->
+    <!-- ========================= -->
+    <record id="action_transit_maintenance" model="ir.actions.act_window">
+        <field name="name">Maintenance Logs</field>
+        <field name="res_model">transit.maintenance</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_transit_maintenance_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first maintenance record.
+            </p>
+        </field>
+    </record>
+
+</odoo>

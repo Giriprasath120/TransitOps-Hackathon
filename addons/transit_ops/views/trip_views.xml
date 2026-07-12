@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Trip Tree View -->
+    <!-- ========================= -->
+    <record id="view_transit_trip_tree" model="ir.ui.view">
+        <field name="name">transit.trip.tree</field>
+        <field name="model">transit.trip</field>
+        <field name="arch" type="xml">
+            <tree string="Trips">
+                <field name="trip_id"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="source"/>
+                <field name="destination"/>
+                <field name="departure_time"/>
+                <field name="arrival_time"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Trip Form View -->
+    <!-- ========================= -->
+    <record id="view_transit_trip_form" model="ir.ui.view">
+        <field name="name">transit.trip.form</field>
+        <field name="model">transit.trip</field>
+        <field name="arch" type="xml">
+            <form string="Trip">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="trip_id"/>
+                            <field name="vehicle_id"/>
+                            <field name="driver_id"/>
+                        </group>
+
+                        <group>
+                            <field name="status"/>
+                        </group>
+                    </group>
+
+                    <group string="Route Information">
+                        <field name="source"/>
+                        <field name="destination"/>
+                    </group>
+
+                    <group string="Schedule">
+                        <field name="departure_time"/>
+                        <field name="arrival_time"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Trip Search View -->
+    <!-- ========================= -->
+    <record id="view_transit_trip_search" model="ir.ui.view">
+        <field name="name">transit.trip.search</field>
+        <field name="model">transit.trip</field>
+        <field name="arch" type="xml">
+            <search string="Search Trips">
+
+                <field name="trip_id"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="source"/>
+                <field name="destination"/>
+
+                <separator/>
+
+                <filter
+                    name="scheduled"
+                    string="Scheduled"
+                    domain="[('status','=','scheduled')]"/>
+
+                <filter
+                    name="ongoing"
+                    string="Ongoing"
+                    domain="[('status','=','ongoing')]"/>
+
+                <filter
+                    name="completed"
+                    string="Completed"
+                    domain="[('status','=','completed')]"/>
+
+                <group expand="0" string="Group By">
+
+                    <filter
+                        string="Vehicle"
+                        context="{'group_by':'vehicle_id'}"/>
+
+                    <filter
+                        string="Driver"
+                        context="{'group_by':'driver_id'}"/>
+
+                    <filter
+                        string="Status"
+                        context="{'group_by':'status'}"/>
+
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Trip Window Action -->
+    <!-- ========================= -->
+    <record id="action_transit_trip" model="ir.actions.act_window">
+        <field name="name">Trips</field>
+        <field name="res_model">transit.trip</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_transit_trip_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first trip.
+            </p>
+        </field>
+    </record>
+
+</odoo>

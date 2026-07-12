@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================================= -->
+    <!-- Root Menu -->
+    <!-- ========================================= -->
+    <menuitem
+        id="menu_transit_root"
+        name="Transit Operations"
+        sequence="1"/>
+
+    <!-- ========================================= -->
+    <!-- Vehicle Menu -->
+    <!-- ========================================= -->
+    <menuitem
+        id="menu_vehicle_root"
+        name="Vehicles"
+        parent="menu_transit_root"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_vehicle"
+        name="Manage Vehicles"
+        parent="menu_vehicle_root"
+        action="action_transit_vehicle"
+        sequence="1"/>
+
+    <!-- ========================================= -->
+    <!-- Driver Menu -->
+    <!-- ========================================= -->
+    <menuitem
+        id="menu_driver_root"
+        name="Drivers"
+        parent="menu_transit_root"
+        sequence="20"/>
+
+    <menuitem
+        id="menu_driver"
+        name="Manage Drivers"
+        parent="menu_driver_root"
+        action="action_transit_driver"
+        sequence="1"/>
+
+    <!-- ========================================= -->
+    <!-- Trip Menu -->
+    <!-- ========================================= -->
+    <menuitem
+        id="menu_trip_root"
+        name="Trips"
+        parent="menu_transit_root"
+        sequence="30"/>
+
+    <menuitem
+        id="menu_trip"
+        name="Manage Trips"
+        parent="menu_trip_root"
+        action="action_transit_trip"
+        sequence="1"/>
+
+    <!-- ========================================= -->
+    <!-- Maintenance Menu -->
+    <!-- ========================================= -->
+    <menuitem
+        id="menu_maintenance_root"
+        name="Maintenance"
+        parent="menu_transit_root"
+        sequence="40"/>
+
+    <menuitem
+        id="menu_maintenance"
+        name="Maintenance Records"
+        parent="menu_maintenance_root"
+        action="action_transit_maintenance"
+        sequence="1"/>
+
+    <!-- ========================================= -->
+    <!-- Fuel Log Menu -->
+    <!-- ========================================= -->
+    <menuitem
+        id="menu_fuel_root"
+        name="Fuel Logs"
+        parent="menu_transit_root"
+        sequence="50"/>
+
+    <menuitem
+        id="menu_fuel"
+        name="Fuel Management"
+        parent="menu_fuel_root"
+        action="action_transit_fuel_log"
+        sequence="1"/>
+
+</odoo>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Fuel Log Tree View -->
+    <!-- ========================= -->
+    <record id="view_transit_fuel_log_tree" model="ir.ui.view">
+        <field name="name">transit.fuel.log.tree</field>
+        <field name="model">transit.fuel.log</field>
+        <field name="arch" type="xml">
+            <tree string="Fuel Logs">
+                <field name="log_id"/>
+                <field name="vehicle_id"/>
+                <field name="fuel_date"/>
+                <field name="fuel_type"/>
+                <field name="fuel_quantity"/>
+                <field name="fuel_cost"/>
+                <field name="odometer"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Fuel Log Form View -->
+    <!-- ========================= -->
+    <record id="view_transit_fuel_log_form" model="ir.ui.view">
+        <field name="name">transit.fuel.log.form</field>
+        <field name="model">transit.fuel.log</field>
+        <field name="arch" type="xml">
+            <form string="Fuel Log">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="log_id"/>
+                            <field name="vehicle_id"/>
+                            <field name="fuel_type"/>
+                        </group>
+
+                        <group>
+                            <field name="fuel_date"/>
+                            <field name="fuel_quantity"/>
+                            <field name="fuel_cost"/>
+                        </group>
+                    </group>
+
+                    <group string="Vehicle Information">
+                        <field name="odometer"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Fuel Log Search View -->
+    <!-- ========================= -->
+    <record id="view_transit_fuel_log_search" model="ir.ui.view">
+        <field name="name">transit.fuel.log.search</field>
+        <field name="model">transit.fuel.log</field>
+        <field name="arch" type="xml">
+            <search string="Search Fuel Logs">
+
+                <field name="log_id"/>
+                <field name="vehicle_id"/>
+                <field name="fuel_type"/>
+
+                <separator/>
+
+                <group expand="0" string="Group By">
+
+                    <filter
+                        string="Vehicle"
+                        context="{'group_by':'vehicle_id'}"/>
+
+                    <filter
+                        string="Fuel Type"
+                        context="{'group_by':'fuel_type'}"/>
+
+                    <filter
+                        string="Fuel Date"
+                        context="{'group_by':'fuel_date'}"/>
+
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Window Action -->
+    <!-- ========================= -->
+    <record id="action_transit_fuel_log" model="ir.actions.act_window">
+        <field name="name">Fuel Logs</field>
+        <field name="res_model">transit.fuel.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_transit_fuel_log_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first fuel log.
+            </p>
+        </field>
+    </record>
+
+</odoo>
