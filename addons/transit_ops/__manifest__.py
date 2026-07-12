@@ -9,9 +9,16 @@
     'depends': ['base'],
 
     'data': [
-        'security/ir.model.access.csv',
-        'views/menu.xml',
-    ],
+    'security/ir.model.access.csv',
+
+    'views/menu.xml',
+
+    'views/vehicle_views.xml',
+    'views/driver_views.xml',
+    'views/trip_views.xml',
+    'views/maintenance_views.xml',
+    'views/fuel_log_views.xml',
+],
 
     'installable': True,
     'application': True,
