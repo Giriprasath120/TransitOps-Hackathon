@@ -9,11 +9,10 @@
         <field name="model">transit.driver</field>
         <field name="arch" type="xml">
             <tree string="Drivers">
-                <field name="driver_id"/>
-                <field name="driver_name"/>
-                <field name="license_number"/>
+                <field name="name"/>
+                <field name="license_no"/>
                 <field name="phone"/>
-                <field name="experience"/>
+                <field name="license_expiry"/>
                 <field name="status"/>
             </tree>
         </field>
@@ -31,15 +30,13 @@
 
                     <group>
                         <group>
-                            <field name="driver_id"/>
-                            <field name="driver_name"/>
-                            <field name="license_number"/>
-                            <field name="experience"/>
+                            <field name="name"/>
+                            <field name="license_no"/>
                         </group>
 
                         <group>
                             <field name="phone"/>
-                            <field name="email"/>
+                            <field name="license_expiry"/>
                             <field name="status"/>
                         </group>
                     </group>
@@ -58,8 +55,8 @@
         <field name="arch" type="xml">
             <search string="Search Drivers">
 
-                <field name="driver_name"/>
-                <field name="license_number"/>
+                <field name="name"/>
+                <field name="license_no"/>
                 <field name="phone"/>
 
                 <separator/>
@@ -75,19 +72,15 @@
                     domain="[('status','=','on_trip')]"/>
 
                 <filter
-                    name="leave"
-                    string="On Leave"
-                    domain="[('status','=','leave')]"/>
+                    name="inactive"
+                    string="Inactive"
+                    domain="[('status','=','inactive')]"/>
 
                 <group expand="0" string="Group By">
 
                     <filter
                         string="Status"
                         context="{'group_by':'status'}"/>
-
-                    <filter
-                        string="Experience"
-                        context="{'group_by':'experience'}"/>
 
                 </group>
 

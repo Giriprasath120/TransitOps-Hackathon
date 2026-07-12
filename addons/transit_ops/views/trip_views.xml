@@ -9,13 +9,14 @@
         <field name="model">transit.trip</field>
         <field name="arch" type="xml">
             <tree string="Trips">
-                <field name="trip_id"/>
+                <field name="trip_name"/>
                 <field name="vehicle_id"/>
                 <field name="driver_id"/>
                 <field name="source"/>
                 <field name="destination"/>
-                <field name="departure_time"/>
-                <field name="arrival_time"/>
+                <field name="distance"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
                 <field name="status"/>
             </tree>
         </field>
@@ -33,12 +34,13 @@
 
                     <group>
                         <group>
-                            <field name="trip_id"/>
+                            <field name="trip_name"/>
                             <field name="vehicle_id"/>
                             <field name="driver_id"/>
                         </group>
 
                         <group>
+                            <field name="distance"/>
                             <field name="status"/>
                         </group>
                     </group>
@@ -49,8 +51,8 @@
                     </group>
 
                     <group string="Schedule">
-                        <field name="departure_time"/>
-                        <field name="arrival_time"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
                     </group>
 
                 </sheet>
@@ -67,7 +69,7 @@
         <field name="arch" type="xml">
             <search string="Search Trips">
 
-                <field name="trip_id"/>
+                <field name="trip_name"/>
                 <field name="vehicle_id"/>
                 <field name="driver_id"/>
                 <field name="source"/>
@@ -76,14 +78,14 @@
                 <separator/>
 
                 <filter
-                    name="scheduled"
-                    string="Scheduled"
-                    domain="[('status','=','scheduled')]"/>
+                    name="planned"
+                    string="Planned"
+                    domain="[('status','=','planned')]"/>
 
                 <filter
-                    name="ongoing"
-                    string="Ongoing"
-                    domain="[('status','=','ongoing')]"/>
+                    name="in_progress"
+                    string="In Progress"
+                    domain="[('status','=','in_progress')]"/>
 
                 <filter
                     name="completed"
